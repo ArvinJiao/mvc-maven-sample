@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xedaojia.crowdsource.mapper.OrdertracksMapper" >
+  <resultMap id="BaseResultMap" type="com.xedaojia.crowdsource.domain.Ordertracks" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="z_order_id" property="zOrderId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="operation_type" property="operationType" jdbcType="INTEGER" />
+    <result column="operation_id" property="operationId" jdbcType="VARCHAR" />
+    <result column="operation_name" property="operationName" jdbcType="VARCHAR" />
+    <result column="role_type" property="roleType" jdbcType="INTEGER" />
+    <result column="order_old_status" property="orderOldStatus" jdbcType="INTEGER" />
+    <result column="order_old_type" property="orderOldType" jdbcType="INTEGER" />
+    <result column="operation_time" property="operationTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="third_party_type" property="thirdPartyType" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xedaojia.crowdsource.domain.Ordertracks" extends="BaseResultMap" >
+    <result column="operation_content" property="operationContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, z_order_id, order_id, parent_id, order_status, order_type, operation_type, operation_id, 
+    operation_name, role_type, order_old_status, order_old_type, operation_time, create_time, 
+    update_time, comments, third_party_type
+  </sql>
+  <sql id="Blob_Column_List" >
+    operation_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zb_order_tracks
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zb_order_tracks
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xedaojia.crowdsource.domain.Ordertracks" >
+    insert into zb_order_tracks (id, z_order_id, order_id, 
+      parent_id, order_status, order_type, 
+      operation_type, operation_id, operation_name, 
+      role_type, order_old_status, order_old_type, 
+      operation_time, create_time, update_time, 
+      comments, third_party_type, operation_content
+      )
+    values (#{id,jdbcType=INTEGER}, #{zOrderId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, #{orderType,jdbcType=INTEGER}, 
+      #{operationType,jdbcType=INTEGER}, #{operationId,jdbcType=VARCHAR}, #{operationName,jdbcType=VARCHAR}, 
+      #{roleType,jdbcType=INTEGER}, #{orderOldStatus,jdbcType=INTEGER}, #{orderOldType,jdbcType=INTEGER}, 
+      #{operationTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{comments,jdbcType=VARCHAR}, #{thirdPartyType,jdbcType=INTEGER}, #{operationContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xedaojia.crowdsource.domain.Ordertracks" >
+    insert into zb_order_tracks
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="zOrderId != null" >
+        z_order_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="operationType != null" >
+        operation_type,
+      </if>
+      <if test="operationId != null" >
+        operation_id,
+      </if>
+      <if test="operationName != null" >
+        operation_name,
+      </if>
+      <if test="roleType != null" >
+        role_type,
+      </if>
+      <if test="orderOldStatus != null" >
+        order_old_status,
+      </if>
+      <if test="orderOldType != null" >
+        order_old_type,
+      </if>
+      <if test="operationTime != null" >
+        operation_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="thirdPartyType != null" >
+        third_party_type,
+      </if>
+      <if test="operationContent != null" >
+        operation_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="zOrderId != null" >
+        #{zOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="operationType != null" >
+        #{operationType,jdbcType=INTEGER},
+      </if>
+      <if test="operationId != null" >
+        #{operationId,jdbcType=VARCHAR},
+      </if>
+      <if test="operationName != null" >
+        #{operationName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=INTEGER},
+      </if>
+      <if test="orderOldStatus != null" >
+        #{orderOldStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderOldType != null" >
+        #{orderOldType,jdbcType=INTEGER},
+      </if>
+      <if test="operationTime != null" >
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartyType != null" >
+        #{thirdPartyType,jdbcType=INTEGER},
+      </if>
+      <if test="operationContent != null" >
+        #{operationContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xedaojia.crowdsource.domain.Ordertracks" >
+    update zb_order_tracks
+    <set >
+      <if test="zOrderId != null" >
+        z_order_id = #{zOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="operationType != null" >
+        operation_type = #{operationType,jdbcType=INTEGER},
+      </if>
+      <if test="operationId != null" >
+        operation_id = #{operationId,jdbcType=VARCHAR},
+      </if>
+      <if test="operationName != null" >
+        operation_name = #{operationName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        role_type = #{roleType,jdbcType=INTEGER},
+      </if>
+      <if test="orderOldStatus != null" >
+        order_old_status = #{orderOldStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderOldType != null" >
+        order_old_type = #{orderOldType,jdbcType=INTEGER},
+      </if>
+      <if test="operationTime != null" >
+        operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartyType != null" >
+        third_party_type = #{thirdPartyType,jdbcType=INTEGER},
+      </if>
+      <if test="operationContent != null" >
+        operation_content = #{operationContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xedaojia.crowdsource.domain.Ordertracks" >
+    update zb_order_tracks
+    set z_order_id = #{zOrderId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=INTEGER},
+      operation_type = #{operationType,jdbcType=INTEGER},
+      operation_id = #{operationId,jdbcType=VARCHAR},
+      operation_name = #{operationName,jdbcType=VARCHAR},
+      role_type = #{roleType,jdbcType=INTEGER},
+      order_old_status = #{orderOldStatus,jdbcType=INTEGER},
+      order_old_type = #{orderOldType,jdbcType=INTEGER},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      comments = #{comments,jdbcType=VARCHAR},
+      third_party_type = #{thirdPartyType,jdbcType=INTEGER},
+      operation_content = #{operationContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xedaojia.crowdsource.domain.Ordertracks" >
+    update zb_order_tracks
+    set z_order_id = #{zOrderId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=INTEGER},
+      operation_type = #{operationType,jdbcType=INTEGER},
+      operation_id = #{operationId,jdbcType=VARCHAR},
+      operation_name = #{operationName,jdbcType=VARCHAR},
+      role_type = #{roleType,jdbcType=INTEGER},
+      order_old_status = #{orderOldStatus,jdbcType=INTEGER},
+      order_old_type = #{orderOldType,jdbcType=INTEGER},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      comments = #{comments,jdbcType=VARCHAR},
+      third_party_type = #{thirdPartyType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

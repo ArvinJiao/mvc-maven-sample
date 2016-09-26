@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xedaojia.crowdsource.mapper.OrderStatusCallbackMapper" >
+  <resultMap id="BaseResultMap" type="com.xedaojia.crowdsource.domain.OrderStatusCallback" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="trade_order_id" property="tradeOrderId" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="deliveryman_name" property="deliverymanName" jdbcType="VARCHAR" />
+    <result column="deliveryman_phone" property="deliverymanPhone" jdbcType="VARCHAR" />
+    <result column="damage" property="damage" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="reqtime" property="reqtime" jdbcType="TIMESTAMP" />
+    <result column="platform" property="platform" jdbcType="VARCHAR" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, trade_order_id, order_status, deliveryman_name, deliveryman_phone, 
+    damage, description, reqtime, platform, appid, version, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from zb_order_status_callback
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zb_order_status_callback
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xedaojia.crowdsource.domain.OrderStatusCallback" >
+    insert into zb_order_status_callback (id, order_id, trade_order_id, 
+      order_status, deliveryman_name, deliveryman_phone, 
+      damage, description, reqtime, 
+      platform, appid, version, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{tradeOrderId,jdbcType=VARCHAR}, 
+      #{orderStatus,jdbcType=INTEGER}, #{deliverymanName,jdbcType=VARCHAR}, #{deliverymanPhone,jdbcType=VARCHAR}, 
+      #{damage,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{reqtime,jdbcType=TIMESTAMP}, 
+      #{platform,jdbcType=VARCHAR}, #{appid,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xedaojia.crowdsource.domain.OrderStatusCallback" >
+    insert into zb_order_status_callback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="tradeOrderId != null" >
+        trade_order_id,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="deliverymanName != null" >
+        deliveryman_name,
+      </if>
+      <if test="deliverymanPhone != null" >
+        deliveryman_phone,
+      </if>
+      <if test="damage != null" >
+        damage,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="reqtime != null" >
+        reqtime,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null" >
+        #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deliverymanName != null" >
+        #{deliverymanName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverymanPhone != null" >
+        #{deliverymanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="damage != null" >
+        #{damage,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="reqtime != null" >
+        #{reqtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xedaojia.crowdsource.domain.OrderStatusCallback" >
+    update zb_order_status_callback
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null" >
+        trade_order_id = #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deliverymanName != null" >
+        deliveryman_name = #{deliverymanName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverymanPhone != null" >
+        deliveryman_phone = #{deliverymanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="damage != null" >
+        damage = #{damage,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="reqtime != null" >
+        reqtime = #{reqtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xedaojia.crowdsource.domain.OrderStatusCallback" >
+    update zb_order_status_callback
+    set order_id = #{orderId,jdbcType=VARCHAR},
+      trade_order_id = #{tradeOrderId,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      deliveryman_name = #{deliverymanName,jdbcType=VARCHAR},
+      deliveryman_phone = #{deliverymanPhone,jdbcType=VARCHAR},
+      damage = #{damage,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      reqtime = #{reqtime,jdbcType=TIMESTAMP},
+      platform = #{platform,jdbcType=VARCHAR},
+      appid = #{appid,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

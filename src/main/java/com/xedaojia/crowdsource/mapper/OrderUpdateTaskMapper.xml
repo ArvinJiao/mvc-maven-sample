@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xedaojia.crowdsource.mapper.OrderUpdateTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.xedaojia.crowdsource.domain.OrderUpdateTask" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="t_type" property="tType" jdbcType="INTEGER" />
+    <result column="order_send_id" property="orderSendId" jdbcType="VARCHAR" />
+    <result column="order_send_name" property="orderSendName" jdbcType="VARCHAR" />
+    <result column="order_send_phone" property="orderSendPhone" jdbcType="VARCHAR" />
+    <result column="get_time" property="getTime" jdbcType="TIMESTAMP" />
+    <result column="z_canel_time" property="zCanelTime" jdbcType="TIMESTAMP" />
+    <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP" />
+    <result column="get_status" property="getStatus" jdbcType="INTEGER" />
+    <result column="send_status" property="sendStatus" jdbcType="INTEGER" />
+    <result column="cancel_status" property="cancelStatus" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="z_cancel_reason" property="zCancelReason" jdbcType="VARCHAR" />
+    <result column="return_status" property="returnStatus" jdbcType="INTEGER" />
+    <result column="inform_cnt" property="informCnt" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="finish_code" property="finishCode" jdbcType="VARCHAR" />
+    <result column="finish_desc" property="finishDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, t_type, order_send_id, order_send_name, order_send_phone, get_time, 
+    z_canel_time, receive_time, get_status, send_status, cancel_status, order_status, 
+    z_cancel_reason, return_status, inform_cnt, create_time, update_time, finish_code, 
+    finish_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from zb_order_update_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zb_order_update_task
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xedaojia.crowdsource.domain.OrderUpdateTask" >
+    insert into zb_order_update_task (id, order_id, t_type, 
+      order_send_id, order_send_name, order_send_phone, 
+      get_time, z_canel_time, receive_time, 
+      get_status, send_status, cancel_status, 
+      order_status, z_cancel_reason, return_status, 
+      inform_cnt, create_time, update_time, 
+      finish_code, finish_desc)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{tType,jdbcType=INTEGER}, 
+      #{orderSendId,jdbcType=VARCHAR}, #{orderSendName,jdbcType=VARCHAR}, #{orderSendPhone,jdbcType=VARCHAR}, 
+      #{getTime,jdbcType=TIMESTAMP}, #{zCanelTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, 
+      #{getStatus,jdbcType=INTEGER}, #{sendStatus,jdbcType=INTEGER}, #{cancelStatus,jdbcType=INTEGER}, 
+      #{orderStatus,jdbcType=INTEGER}, #{zCancelReason,jdbcType=VARCHAR}, #{returnStatus,jdbcType=INTEGER}, 
+      #{informCnt,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{finishCode,jdbcType=VARCHAR}, #{finishDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xedaojia.crowdsource.domain.OrderUpdateTask" >
+    insert into zb_order_update_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="tType != null" >
+        t_type,
+      </if>
+      <if test="orderSendId != null" >
+        order_send_id,
+      </if>
+      <if test="orderSendName != null" >
+        order_send_name,
+      </if>
+      <if test="orderSendPhone != null" >
+        order_send_phone,
+      </if>
+      <if test="getTime != null" >
+        get_time,
+      </if>
+      <if test="zCanelTime != null" >
+        z_canel_time,
+      </if>
+      <if test="receiveTime != null" >
+        receive_time,
+      </if>
+      <if test="getStatus != null" >
+        get_status,
+      </if>
+      <if test="sendStatus != null" >
+        send_status,
+      </if>
+      <if test="cancelStatus != null" >
+        cancel_status,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="zCancelReason != null" >
+        z_cancel_reason,
+      </if>
+      <if test="returnStatus != null" >
+        return_status,
+      </if>
+      <if test="informCnt != null" >
+        inform_cnt,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="finishCode != null" >
+        finish_code,
+      </if>
+      <if test="finishDesc != null" >
+        finish_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="tType != null" >
+        #{tType,jdbcType=INTEGER},
+      </if>
+      <if test="orderSendId != null" >
+        #{orderSendId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendName != null" >
+        #{orderSendName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendPhone != null" >
+        #{orderSendPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="getTime != null" >
+        #{getTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zCanelTime != null" >
+        #{zCanelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null" >
+        #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="getStatus != null" >
+        #{getStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendStatus != null" >
+        #{sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cancelStatus != null" >
+        #{cancelStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="zCancelReason != null" >
+        #{zCancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="returnStatus != null" >
+        #{returnStatus,jdbcType=INTEGER},
+      </if>
+      <if test="informCnt != null" >
+        #{informCnt,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishCode != null" >
+        #{finishCode,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDesc != null" >
+        #{finishDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xedaojia.crowdsource.domain.OrderUpdateTask" >
+    update zb_order_update_task
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="tType != null" >
+        t_type = #{tType,jdbcType=INTEGER},
+      </if>
+      <if test="orderSendId != null" >
+        order_send_id = #{orderSendId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendName != null" >
+        order_send_name = #{orderSendName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSendPhone != null" >
+        order_send_phone = #{orderSendPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="getTime != null" >
+        get_time = #{getTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zCanelTime != null" >
+        z_canel_time = #{zCanelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveTime != null" >
+        receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="getStatus != null" >
+        get_status = #{getStatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendStatus != null" >
+        send_status = #{sendStatus,jdbcType=INTEGER},
+      </if>
+      <if test="cancelStatus != null" >
+        cancel_status = #{cancelStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="zCancelReason != null" >
+        z_cancel_reason = #{zCancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="returnStatus != null" >
+        return_status = #{returnStatus,jdbcType=INTEGER},
+      </if>
+      <if test="informCnt != null" >
+        inform_cnt = #{informCnt,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishCode != null" >
+        finish_code = #{finishCode,jdbcType=VARCHAR},
+      </if>
+      <if test="finishDesc != null" >
+        finish_desc = #{finishDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xedaojia.crowdsource.domain.OrderUpdateTask" >
+    update zb_order_update_task
+    set order_id = #{orderId,jdbcType=VARCHAR},
+      t_type = #{tType,jdbcType=INTEGER},
+      order_send_id = #{orderSendId,jdbcType=VARCHAR},
+      order_send_name = #{orderSendName,jdbcType=VARCHAR},
+      order_send_phone = #{orderSendPhone,jdbcType=VARCHAR},
+      get_time = #{getTime,jdbcType=TIMESTAMP},
+      z_canel_time = #{zCanelTime,jdbcType=TIMESTAMP},
+      receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+      get_status = #{getStatus,jdbcType=INTEGER},
+      send_status = #{sendStatus,jdbcType=INTEGER},
+      cancel_status = #{cancelStatus,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      z_cancel_reason = #{zCancelReason,jdbcType=VARCHAR},
+      return_status = #{returnStatus,jdbcType=INTEGER},
+      inform_cnt = #{informCnt,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      finish_code = #{finishCode,jdbcType=VARCHAR},
+      finish_desc = #{finishDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

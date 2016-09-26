@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xedaojia.crowdsource.mapper.MainOrderInfoExtendMapper" >
+  <resultMap id="BaseResultMap" type="com.xedaojia.crowdsource.domain.MainOrderInfoExtend" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="trade_order_id" property="tradeOrderId" jdbcType="VARCHAR" />
+    <result column="dispatch_time" property="dispatchTime" jdbcType="TIMESTAMP" />
+    <result column="zb_main_id" property="zbMainId" jdbcType="INTEGER" />
+    <result column="third_party_type" property="thirdPartyType" jdbcType="INTEGER" />
+    <result column="send_cnt" property="sendCnt" jdbcType="INTEGER" />
+    <result column="last_send_time" property="lastSendTime" jdbcType="TIMESTAMP" />
+    <result column="order_status_callback" property="orderStatusCallback" jdbcType="INTEGER" />
+    <result column="desc_callback" property="descCallback" jdbcType="VARCHAR" />
+    <result column="damage" property="damage" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, trade_order_id, dispatch_time, zb_main_id, third_party_type, send_cnt, 
+    last_send_time, order_status_callback, desc_callback, damage
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from zb_main_order_info_extend
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from zb_main_order_info_extend
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xedaojia.crowdsource.domain.MainOrderInfoExtend" >
+    insert into zb_main_order_info_extend (id, order_id, trade_order_id, 
+      dispatch_time, zb_main_id, third_party_type, 
+      send_cnt, last_send_time, order_status_callback, 
+      desc_callback, damage)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{tradeOrderId,jdbcType=VARCHAR}, 
+      #{dispatchTime,jdbcType=TIMESTAMP}, #{zbMainId,jdbcType=INTEGER}, #{thirdPartyType,jdbcType=INTEGER}, 
+      #{sendCnt,jdbcType=INTEGER}, #{lastSendTime,jdbcType=TIMESTAMP}, #{orderStatusCallback,jdbcType=INTEGER}, 
+      #{descCallback,jdbcType=VARCHAR}, #{damage,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xedaojia.crowdsource.domain.MainOrderInfoExtend" >
+    insert into zb_main_order_info_extend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="tradeOrderId != null" >
+        trade_order_id,
+      </if>
+      <if test="dispatchTime != null" >
+        dispatch_time,
+      </if>
+      <if test="zbMainId != null" >
+        zb_main_id,
+      </if>
+      <if test="thirdPartyType != null" >
+        third_party_type,
+      </if>
+      <if test="sendCnt != null" >
+        send_cnt,
+      </if>
+      <if test="lastSendTime != null" >
+        last_send_time,
+      </if>
+      <if test="orderStatusCallback != null" >
+        order_status_callback,
+      </if>
+      <if test="descCallback != null" >
+        desc_callback,
+      </if>
+      <if test="damage != null" >
+        damage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null" >
+        #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchTime != null" >
+        #{dispatchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zbMainId != null" >
+        #{zbMainId,jdbcType=INTEGER},
+      </if>
+      <if test="thirdPartyType != null" >
+        #{thirdPartyType,jdbcType=INTEGER},
+      </if>
+      <if test="sendCnt != null" >
+        #{sendCnt,jdbcType=INTEGER},
+      </if>
+      <if test="lastSendTime != null" >
+        #{lastSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatusCallback != null" >
+        #{orderStatusCallback,jdbcType=INTEGER},
+      </if>
+      <if test="descCallback != null" >
+        #{descCallback,jdbcType=VARCHAR},
+      </if>
+      <if test="damage != null" >
+        #{damage,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xedaojia.crowdsource.domain.MainOrderInfoExtend" >
+    update zb_main_order_info_extend
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeOrderId != null" >
+        trade_order_id = #{tradeOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="dispatchTime != null" >
+        dispatch_time = #{dispatchTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zbMainId != null" >
+        zb_main_id = #{zbMainId,jdbcType=INTEGER},
+      </if>
+      <if test="thirdPartyType != null" >
+        third_party_type = #{thirdPartyType,jdbcType=INTEGER},
+      </if>
+      <if test="sendCnt != null" >
+        send_cnt = #{sendCnt,jdbcType=INTEGER},
+      </if>
+      <if test="lastSendTime != null" >
+        last_send_time = #{lastSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatusCallback != null" >
+        order_status_callback = #{orderStatusCallback,jdbcType=INTEGER},
+      </if>
+      <if test="descCallback != null" >
+        desc_callback = #{descCallback,jdbcType=VARCHAR},
+      </if>
+      <if test="damage != null" >
+        damage = #{damage,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xedaojia.crowdsource.domain.MainOrderInfoExtend" >
+    update zb_main_order_info_extend
+    set order_id = #{orderId,jdbcType=VARCHAR},
+      trade_order_id = #{tradeOrderId,jdbcType=VARCHAR},
+      dispatch_time = #{dispatchTime,jdbcType=TIMESTAMP},
+      zb_main_id = #{zbMainId,jdbcType=INTEGER},
+      third_party_type = #{thirdPartyType,jdbcType=INTEGER},
+      send_cnt = #{sendCnt,jdbcType=INTEGER},
+      last_send_time = #{lastSendTime,jdbcType=TIMESTAMP},
+      order_status_callback = #{orderStatusCallback,jdbcType=INTEGER},
+      desc_callback = #{descCallback,jdbcType=VARCHAR},
+      damage = #{damage,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByOrderId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zb_main_order_info_extend
+    where order_id = #{order_id,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

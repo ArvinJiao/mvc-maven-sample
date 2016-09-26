@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xedaojia.crowdsource.mapper.GoodsOrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xedaojia.crowdsource.domain.GoodsOrderInfo" >
+    <id column="goods_order_id" property="goodsOrderId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="goods_type" property="goodsType" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
+    <result column="goods_market_price" property="goodsMarketPrice" jdbcType="DECIMAL" />
+    <result column="goods_allmark_price" property="goodsAllmarkPrice" jdbcType="DECIMAL" />
+    <result column="goods_cnt" property="goodsCnt" jdbcType="INTEGER" />
+    <result column="goods_spec_info" property="goodsSpecInfo" jdbcType="VARCHAR" />
+    <result column="goods_pic" property="goodsPic" jdbcType="VARCHAR" />
+    <result column="goods_desc" property="goodsDesc" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="del_where" property="delWhere" jdbcType="INTEGER" />
+    <result column="g_type" property="gType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goods_order_id, order_id, user_id, goods_type, goods_id, goods_name, goods_price, 
+    goods_market_price, goods_allmark_price, goods_cnt, goods_spec_info, goods_pic, goods_desc, 
+    status, create_time, update_time, del_where, g_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from zb_goods_order_info
+    where goods_order_id = #{goodsOrderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from zb_goods_order_info
+    where goods_order_id = #{goodsOrderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xedaojia.crowdsource.domain.GoodsOrderInfo" >
+    insert into zb_goods_order_info (goods_order_id, order_id, user_id, 
+      goods_type, goods_id, goods_name, 
+      goods_price, goods_market_price, goods_allmark_price, 
+      goods_cnt, goods_spec_info, goods_pic, 
+      goods_desc, status, create_time, 
+      update_time, del_where, g_type
+      )
+    values (#{goodsOrderId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{goodsType,jdbcType=VARCHAR}, #{goodsId,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{goodsPrice,jdbcType=DECIMAL}, #{goodsMarketPrice,jdbcType=DECIMAL}, #{goodsAllmarkPrice,jdbcType=DECIMAL}, 
+      #{goodsCnt,jdbcType=INTEGER}, #{goodsSpecInfo,jdbcType=VARCHAR}, #{goodsPic,jdbcType=VARCHAR}, 
+      #{goodsDesc,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{delWhere,jdbcType=INTEGER}, #{gType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xedaojia.crowdsource.domain.GoodsOrderInfo" >
+    insert into zb_goods_order_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsOrderId != null" >
+        goods_order_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="goodsType != null" >
+        goods_type,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="goodsMarketPrice != null" >
+        goods_market_price,
+      </if>
+      <if test="goodsAllmarkPrice != null" >
+        goods_allmark_price,
+      </if>
+      <if test="goodsCnt != null" >
+        goods_cnt,
+      </if>
+      <if test="goodsSpecInfo != null" >
+        goods_spec_info,
+      </if>
+      <if test="goodsPic != null" >
+        goods_pic,
+      </if>
+      <if test="goodsDesc != null" >
+        goods_desc,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="delWhere != null" >
+        del_where,
+      </if>
+      <if test="gType != null" >
+        g_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsOrderId != null" >
+        #{goodsOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsMarketPrice != null" >
+        #{goodsMarketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAllmarkPrice != null" >
+        #{goodsAllmarkPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsCnt != null" >
+        #{goodsCnt,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSpecInfo != null" >
+        #{goodsSpecInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPic != null" >
+        #{goodsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDesc != null" >
+        #{goodsDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delWhere != null" >
+        #{delWhere,jdbcType=INTEGER},
+      </if>
+      <if test="gType != null" >
+        #{gType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xedaojia.crowdsource.domain.GoodsOrderInfo" >
+    update zb_goods_order_info
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        goods_type = #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsMarketPrice != null" >
+        goods_market_price = #{goodsMarketPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsAllmarkPrice != null" >
+        goods_allmark_price = #{goodsAllmarkPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsCnt != null" >
+        goods_cnt = #{goodsCnt,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSpecInfo != null" >
+        goods_spec_info = #{goodsSpecInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPic != null" >
+        goods_pic = #{goodsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDesc != null" >
+        goods_desc = #{goodsDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delWhere != null" >
+        del_where = #{delWhere,jdbcType=INTEGER},
+      </if>
+      <if test="gType != null" >
+        g_type = #{gType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goods_order_id = #{goodsOrderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xedaojia.crowdsource.domain.GoodsOrderInfo" >
+    update zb_goods_order_info
+    set order_id = #{orderId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      goods_market_price = #{goodsMarketPrice,jdbcType=DECIMAL},
+      goods_allmark_price = #{goodsAllmarkPrice,jdbcType=DECIMAL},
+      goods_cnt = #{goodsCnt,jdbcType=INTEGER},
+      goods_spec_info = #{goodsSpecInfo,jdbcType=VARCHAR},
+      goods_pic = #{goodsPic,jdbcType=VARCHAR},
+      goods_desc = #{goodsDesc,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_where = #{delWhere,jdbcType=INTEGER},
+      g_type = #{gType,jdbcType=VARCHAR}
+    where goods_order_id = #{goodsOrderId,jdbcType=VARCHAR}
+  </update>
+</mapper>
