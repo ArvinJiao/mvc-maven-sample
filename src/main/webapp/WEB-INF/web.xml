@@ -37,7 +37,7 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.s</url-pattern>
 	</servlet-mapping>
 
 
