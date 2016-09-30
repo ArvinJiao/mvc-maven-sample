@@ -1,2 +1,1 @@
-MVC
-new
+It's a MVC sample
