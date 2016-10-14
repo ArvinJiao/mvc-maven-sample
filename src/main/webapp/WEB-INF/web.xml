@@ -22,6 +22,15 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>MDCFilter</filter-name>
+		<filter-class>com.xedaojia.common.filter.MDCFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>MDCFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>
