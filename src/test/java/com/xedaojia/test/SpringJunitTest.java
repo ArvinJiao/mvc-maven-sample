@@ -12,17 +12,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xedaojia.common.config.Configurer;
-import com.xedaojia.crowdsource.domain.MainOrderInfo;
-import com.xedaojia.crowdsource.mapper.MainOrderInfoMapper;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath*:applicationContext.xml")
 public class SpringJunitTest extends AbstractJUnit4SpringContextTests{
 
 	Logger log = LoggerFactory.getLogger(SpringJunitTest.class);
-	
-	@Autowired
-	private MainOrderInfoMapper mainOrderInfoMapper;
 	
 	@Test
 	public void test(){

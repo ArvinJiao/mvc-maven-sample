@@ -24,6 +24,14 @@
 		<property name="maxActive" value="${zbdispatch.db.maxActive}" />
 		<property name="minIdle" value="${zbdispatch.db.minIdle}" />
 		<property name="maxWait" value="${zbdispatch.db.maxWait}" />
+		<property name="queryTimeout" value="${zbdispatch.db.queryTimeout}" />
+		<!--  
+		<property name="transactionQueryTimeout" value="${zbdispatch.db.transactionQueryTimeout}" />
+		<property name="removeAbandoned" value="${zbdispatch.db.removeAbandoned}" />
+		<property name="removeAbandonedTimeoutMillis" value="${zbdispatch.db.removeAbandonedTimeoutMillis}" />
+		-->
+		<!-- StatFilter，用于统计监控信息 -->
+		<property name="filters" value="stat" />
 	</bean>
 
 	<!-- transaction manager -->
@@ -52,7 +60,7 @@
 	<!-- scan mapper package -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- mapper的目录, 该目录下不能包含其它的文件, 多个目录用逗号隔开 -->
-		<property name="basePackage" value="com.xedaojia.crowdsource.mapper"></property>
+		<property name="basePackage" value="com.xedaojia.mapper"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 

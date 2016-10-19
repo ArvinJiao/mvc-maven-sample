@@ -48,6 +48,16 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.s</url-pattern>
 	</servlet-mapping>
+	
+	<!-- StatViewServlet用于展示Druid的统计信息 -->
+	<servlet>
+      <servlet-name>DruidStatView</servlet-name>
+      <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>
