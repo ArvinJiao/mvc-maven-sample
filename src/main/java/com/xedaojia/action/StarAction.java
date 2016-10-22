@@ -24,7 +24,7 @@ public class StarAction {
 	
 	@RequestMapping("star/test")
 	public @ResponseBody String test(){
-		logger.error("it is a test");
+		//logger.error("it is a test");
 		return "success";
 	}
 	
