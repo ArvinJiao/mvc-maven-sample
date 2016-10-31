@@ -42,5 +42,7 @@
 
 	<!-- database -->
 	<import resource="database.xml"/>
+	
+	<import resource="hessian.xml"/>
 
 </beans>
