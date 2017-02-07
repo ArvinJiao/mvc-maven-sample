@@ -91,7 +91,7 @@
 		<appender-ref ref="EMAIL" />
 	</logger>
 
-	<root level="debug">
+	<root level="warn">
 		<appender-ref ref="FILE-ERROR" />
 		<appender-ref ref="STDOUT" />
 	</root>

@@ -32,6 +32,7 @@
 			<list>
 				<value>classpath:config.properties</value>
 				<value>classpath:jdbc.properties</value>
+				<value>classpath:redis.properties</value>
 			</list>
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />

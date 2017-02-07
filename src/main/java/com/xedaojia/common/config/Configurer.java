@@ -21,5 +21,13 @@ public class Configurer extends PropertyPlaceholderConfigurer{
 		return properties.getProperty(key);
 	}
 	
+	public static Integer getInteger(String key){
+		return Integer.valueOf(getValue(key));
+	}
+	
+	public static Long getLong(String key){
+		return Long.valueOf(getValue(key));
+	}
+	
 	
 }
