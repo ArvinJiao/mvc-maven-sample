@@ -27,3 +27,6 @@ https://github.com/giuseppeurso-eu/activemq.git
 
 netty
 https://github.com/netty/netty.git
+
+curator
+https://github.com/apache/curator.git

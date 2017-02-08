@@ -10,7 +10,7 @@
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.2.RELEASE</org.springframework-version>
-		<org.slf4j-version>1.7.12</org.slf4j-version>
+		<org.slf4j-version>1.7.22</org.slf4j-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 		<logback-version>1.1.7</logback-version>
 	</properties>
@@ -77,15 +77,25 @@
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+    	</dependency>
+    	<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
 		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback-version}</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- AspectJ -->
@@ -150,6 +160,33 @@
 			<version>4.0.38</version>
 		</dependency>
 
+		<!-- zookeeper -->
+		<dependency>
+		    <groupId>org.apache.curator</groupId>
+		    <artifactId>curator-recipes</artifactId>
+		    <version>2.11.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.4.9</version>
+			<!-- 3.5.2-alpha -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+      			</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+      			</exclusion>
+		    </exclusions>
+		</dependency>
+		
 		<!-- other -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -207,7 +244,12 @@
 			<artifactId>mailapi</artifactId>
 			<version>1.4.3</version>
 		</dependency>
-
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>5.0.0.Alpha2</version>
+		</dependency>
+		
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -222,11 +264,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>io.netty</groupId>
-			<artifactId>netty-all</artifactId>
-			<version>5.0.0.Alpha2</version>
-		</dependency>
+
 		
 	</dependencies>
 
