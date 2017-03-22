@@ -18,6 +18,7 @@ tomcat:run -Dmaven.tomcat.port=80 -Dmaven.tomcat.path=/
 jetty启动:
 jetty:run -Djetty.port=80
 -Djava.net.preferIPv4Stack=true 用来指定ipv4,如出现'Unable to establish loopback connection'异常可以加上该配置
+-P dev 指定环境
 
 activemq
 https://github.com/apache/activemq.git
